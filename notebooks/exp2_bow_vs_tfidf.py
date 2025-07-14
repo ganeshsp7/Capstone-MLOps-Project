@@ -3,6 +3,8 @@ import os
 import re
 import string
 import pandas as pd
+from dotenv import load_dotenv
+
 pd.set_option('future.no_silent_downcasting', True)
 
 import numpy as np
@@ -20,17 +22,25 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import scipy.sparse
 
+
 import warnings
 warnings.simplefilter("ignore", UserWarning)
 warnings.filterwarnings("ignore")
+
+load_dotenv()  # Load from .env file
+
+# ========================== Read environment variables ==========================
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
+DAGSHUB_OWNER = os.getenv("DAGSHUB_OWNER")
+DAGSHUB_REPO = os.getenv("DAGSHUB_REPO")
 
 # ========================== CONFIGURATION ==========================
 CONFIG = {
     "data_path": "notebooks/data.csv",
     "test_size": 0.2,
-    "mlflow_tracking_uri": "https://dagshub.com/vikashdas770/YT-Capstone-Project.mlflow",
-    "dagshub_repo_owner": "vikashdas770",
-    "dagshub_repo_name": "YT-Capstone-Project",
+    "mlflow_tracking_uri": MLFLOW_TRACKING_URI,
+    "dagshub_repo_owner": DAGSHUB_OWNER,
+    "dagshub_repo_name": DAGSHUB_REPO,
     "experiment_name": "Bow vs TfIdf"
 }
 
@@ -38,6 +48,7 @@ CONFIG = {
 mlflow.set_tracking_uri(CONFIG["mlflow_tracking_uri"])
 dagshub.init(repo_owner=CONFIG["dagshub_repo_owner"], repo_name=CONFIG["dagshub_repo_name"], mlflow=True)
 mlflow.set_experiment(CONFIG["experiment_name"])
+
 
 # ========================== TEXT PREPROCESSING ==========================
 def lemmatization(text):

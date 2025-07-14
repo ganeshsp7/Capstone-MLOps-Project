@@ -13,5 +13,8 @@
 
 #packages that i have used
 dagshub 
-mlflow
+# mlflow
 nltk
+mlflow==2.15.0
+python-dotenv
+xgboost

@@ -3,6 +3,9 @@ import re
 import string
 import numpy as np
 import pandas as pd
+from dotenv import load_dotenv
+
+
 import mlflow
 import mlflow.sklearn
 import dagshub
@@ -17,14 +20,34 @@ import warnings
 warnings.simplefilter("ignore", UserWarning)
 warnings.filterwarnings("ignore")
 
+
+# ========================== Load from .env file==========================
+load_dotenv()  
+
+# ========================== Read environment variables ==========================
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
+DAGSHUB_OWNER = os.getenv("DAGSHUB_OWNER")
+DAGSHUB_REPO = os.getenv("DAGSHUB_REPO")
+
+# ========================== CONFIGURATION ==========================
+CONFIG = {
+    "data_path": "notebooks/data.csv",
+    "test_size": 0.2,
+    "mlflow_tracking_uri": MLFLOW_TRACKING_URI,
+    "dagshub_repo_owner": DAGSHUB_OWNER,
+    "dagshub_repo_name": DAGSHUB_REPO,
+    "experiment_name": "LoR Hyperparameter Tuning"
+}
+
+
+
 # Suppress MLflow artifact download warnings
 # os.environ["MLFLOW_DISABLE_ARTIFACTS_DOWNLOAD"] = "1"
 
-# Set MLflow Tracking URI & DAGsHub integration
-MLFLOW_TRACKING_URI = "https://dagshub.com/vikashdas770/YT-Capstone-Project.mlflow"
-dagshub.init(repo_owner="vikashdas770", repo_name="YT-Capstone-Project", mlflow=True)
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-mlflow.set_experiment("LoR Hyperparameter Tuning")
+# ========================== SETUP MLflow & DAGSHUB ==========================
+mlflow.set_tracking_uri(CONFIG["mlflow_tracking_uri"])
+dagshub.init(repo_owner=CONFIG["dagshub_repo_owner"], repo_name=CONFIG["dagshub_repo_name"], mlflow=True)
+mlflow.set_experiment(CONFIG["experiment_name"])
 
 
 # ==========================
@@ -63,7 +86,7 @@ def load_and_prepare_data(filepath):
     X = vectorizer.fit_transform(df["review"])
     y = df["sentiment"]
     
-    return train_test_split(X, y, test_size=0.2, random_state=42), vectorizer
+    return train_test_split(X, y, test_size=CONFIG["test_size"], random_state=42), vectorizer
 
 
 # ==========================
@@ -123,5 +146,5 @@ def train_and_log_model(X_train, X_test, y_train, y_test, vectorizer):
 # Main Execution
 # ==========================
 if __name__ == "__main__":
-    (X_train, X_test, y_train, y_test), vectorizer = load_and_prepare_data("notebooks/data.csv")
+    (X_train, X_test, y_train, y_test), vectorizer = load_and_prepare_data(CONFIG["data_path"])
     train_and_log_model(X_train, X_test, y_train, y_test, vectorizer)
