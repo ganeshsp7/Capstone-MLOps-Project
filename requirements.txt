@@ -18,3 +18,4 @@ nltk
 mlflow==2.15.0
 python-dotenv
 xgboost
+dvc
