@@ -19,3 +19,6 @@ mlflow==2.15.0
 python-dotenv
 xgboost
 dvc
+dvc[s3]
+awscli
+prometheus_client
