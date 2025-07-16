@@ -14,11 +14,12 @@
 #packages that i have used
 dagshub 
 # mlflow
+botocore==1.38.27
 nltk
 mlflow==2.15.0
 python-dotenv
 xgboost
 dvc
 dvc[s3]
-awscli
+awscli==1.40.26
 prometheus_client
