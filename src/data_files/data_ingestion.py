@@ -11,15 +11,25 @@ import logging
 from src.logger import logging
 from src.connections import s3_connection
 
+# -------------------------------------------------------------------------------------
+# Below code block is for local use
+# -------------------------------------------------------------------------------------
 
 # ========================== Load from .env file==========================
-load_dotenv()  
+# load_dotenv()  
+# # ========================== Read environment variables ==========================
+# AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+# Bucket_Name = os.getenv("Bucket_Name")
 
-# ========================== Read environment variables ==========================
+
+# -------------------------------------------------------------------------------------
+# Below code block is for Production Use
+# -------------------------------------------------------------------------------------
+# Set up DagsHub credentials for MLflow tracking
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 Bucket_Name = os.getenv("Bucket_Name")
-
 
 
 def load_params(params_path: str) -> dict:
