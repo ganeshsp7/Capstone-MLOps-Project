@@ -15,36 +15,38 @@ from dotenv import load_dotenv
 # Below code block is for production use
 # -------------------------------------------------------------------------------------
 # Set up DagsHub credentials for MLflow tracking
-# dagshub_token = os.getenv("CAPSTONE_TEST")
-# if not dagshub_token:
-#     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
+dagshub_token = os.getenv("CAPSTONE_TEST")
+dagshub_owner = os.getenv("DAGSHUB_OWNER")
+dagshub_repo = os.getenv("DAGSHUB_REPO")
 
-# os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+if not dagshub_token:
+    raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
 
-# dagshub_url = "https://dagshub.com"
-# repo_owner = "vikashdas770"
-# repo_name = "YT-Capstone-Project"
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-# # Set up MLflow tracking URI
-# mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+dagshub_url = "https://dagshub.com"
+repo_owner = dagshub_owner
+repo_name = dagshub_repo
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 # # -------------------------------------------------------------------------------------
 
 
 
 # Below code block is for local use
-# ========================== Load from .env file==========================
-load_dotenv()  
+# # ========================== Load from .env file==========================
+# load_dotenv()  
 
-# ========================== Read environment variables ==========================
-MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
-DAGSHUB_OWNER = os.getenv("DAGSHUB_OWNER")
-DAGSHUB_REPO = os.getenv("DAGSHUB_REPO")
+# # ========================== Read environment variables ==========================
+# MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
+# DAGSHUB_OWNER = os.getenv("DAGSHUB_OWNER")
+# DAGSHUB_REPO = os.getenv("DAGSHUB_REPO")
 
-# ========================== SETUP MLflow & DAGSHUB ==========================
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-dagshub.init(repo_owner=DAGSHUB_OWNER, repo_name=DAGSHUB_REPO, mlflow=True)
-mlflow.set_experiment("my-dvc-pipeline")
+# # ========================== SETUP MLflow & DAGSHUB ==========================
+# mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+# dagshub.init(repo_owner=DAGSHUB_OWNER, repo_name=DAGSHUB_REPO, mlflow=True)
+# mlflow.set_experiment("my-dvc-pipeline")
 
 # -------------------------------------------------------------------------------------
 
