@@ -30,7 +30,7 @@ from src.connections import s3_connection
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 Bucket_Name = os.getenv("BUCKET_NAME")
-print(Bucket_Name)
+
 
 
 def load_params(params_path: str) -> dict:
