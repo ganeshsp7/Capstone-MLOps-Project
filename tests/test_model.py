@@ -6,6 +6,8 @@ import os
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import pickle
+from mlflow.exceptions import MlflowException
+
 
 class TestModelLoading(unittest.TestCase):
 
@@ -45,8 +47,14 @@ class TestModelLoading(unittest.TestCase):
     @staticmethod
     def get_latest_model_version(model_name, stage="Staging"):
         client = mlflow.MlflowClient()
-        latest_version = client.get_latest_versions(model_name, stages=[stage])
-        return latest_version[0].version if latest_version else None
+        # latest_version = client.get_latest_versions(model_name, stages=[stage])
+        # return latest_version[0].version if latest_version else None
+        try:
+            latest_versions = client.get_latest_versions(model_name, stages=[stage])
+            return latest_versions[0].version if latest_versions else None
+        except MlflowException as e:
+            print(f"[Warning] Could not get latest model version for '{model_name}': {e}")
+            return None
 
     def test_model_loaded_properly(self):
         self.assertIsNotNone(self.new_model)

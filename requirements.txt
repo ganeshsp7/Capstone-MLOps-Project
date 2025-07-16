@@ -16,7 +16,7 @@ dagshub
 # mlflow
 botocore==1.38.27
 nltk
-mlflow==2.15.0
+mlflow==2.8.0
 python-dotenv
 xgboost
 dvc
