@@ -76,7 +76,7 @@ def normalize_text(text):
 
 
 # ========================== Load from .env file==========================
-# load_dotenv()  
+load_dotenv()  
 
 # # ========================== Read environment variables ==========================
 # MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
@@ -106,8 +106,10 @@ os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 dagshub_url = "https://dagshub.com"
 repo_owner = dagshub_owner
 repo_name = dagshub_repo
+
 # Set up MLflow tracking URI
-mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+# mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+mlflow.set_tracking_uri(f"https://dagshub.com/{dagshub_owner}/{dagshub_repo}.mlflow")
 # -------------------------------------------------------------------------------------
 
 
