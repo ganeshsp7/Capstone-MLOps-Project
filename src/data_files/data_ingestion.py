@@ -26,7 +26,7 @@ from src.connections import s3_connection
 # -------------------------------------------------------------------------------------
 # Below code block is for Production Use
 # -------------------------------------------------------------------------------------
-# Set up DagsHub credentials for MLflow tracking
+# Read environment variables
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 Bucket_Name = os.getenv("BUCKET_NAME")
@@ -99,7 +99,8 @@ def main():
         
         # df = load_data(data_url='https://raw.githubusercontent.com/vikashishere/Datasets/refs/heads/main/data.csv')
         s3 = s3_connection.s3_operations(Bucket_Name, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
-        df = s3.fetch_file_from_s3("data.csv")
+        # df = s3.fetch_file_from_s3("data.csv")
+        df = s3.fetch_file_from_s3("IMDB.csv")
 
 
 

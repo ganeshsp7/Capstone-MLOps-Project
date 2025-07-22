@@ -96,7 +96,7 @@ def train_and_log_model(X_train, X_test, y_train, y_test, vectorizer):
     """Trains a Logistic Regression model with GridSearch and logs results to MLflow."""
     
     param_grid = {
-        "C": [0.1, 1, 10],
+        "C": [0.01,0.1, 1, 10],
         "penalty": ["l1", "l2"],
         "solver": ["liblinear"]
     }
