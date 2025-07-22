@@ -1,18 +1,22 @@
-# 🎬 Movie Review Sentiment Analyzer — End-to-End MLOps Project
+## 🎬 Movie Review Sentiment Analyzer — End-to-End MLOps Project
 An industry-grade, fully automated sentiment analysis pipeline showcasing a production-ready MLOps workflow—from data ingestion and versioning to model training, CI/CD, deployment on Kubernetes, and real-time monitoring.
 
 
-🚀 Overview
+### 🚀 Overview
 This project delivers a comprehensive MLOps workflow, covering the full machine learning lifecycle—from secure data ingestion, reproducible training, and model tracking to containerized deployment and live system monitoring. Built for real-world MLOps adoption, it leverages powerful open-source tools and AWS-native services.
 
-🚀 Major Highlights
+---
+
+### 🚀 Major Highlights
     🔄 Fully Automated End-to-End Pipeline — One-click MLOps: from ingestion → deployment → monitoring
     ♻️ Reproducibility by Design — Every pipeline stage is versioned and rollback-capable
     🧠 Experiment-Driven Development — All model versions compared objectively; best models promoted
     🏗️ Cloud-Native & Scalable — Docker + ECR + EKS ensure high availability and portability
     📡 Observability at Scale — Live dashboards and alerts powered by Prometheus & Grafana
 
-🧠 Key Features
+---
+
+### 🧠 Key Features
     ✅ Binary Sentiment Classification — Classifies movie reviews as Positive or Negative
     ☁️ Data Ingestion from AWS S3 — Pulls raw data directly from a secure and scalable S3 bucket
     📦 Data & Pipeline Versioning with DVC — Tracks datasets, code, and pipeline stages
@@ -23,6 +27,7 @@ This project delivers a comprehensive MLOps workflow, covering the full machine 
     ☸️ Deployment with Kubernetes on AWS EKS — Manages scaling, load balancing, and orchestration
     📊 Real-Time Monitoring with Prometheus & Grafana — Tracks system and model performance in production
 
+---
 
 🛠️ Tech Stack & Tools
 | **Category**             | **Technology / Tools**                                                               |
@@ -41,6 +46,7 @@ This project delivers a comprehensive MLOps workflow, covering the full machine 
 | **Dependencies**         | pipreqs                                                                              |
 
 
+---
 
 ## 🔄 Pipeline Workflow
 
