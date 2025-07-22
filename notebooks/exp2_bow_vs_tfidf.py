@@ -36,7 +36,7 @@ DAGSHUB_REPO = os.getenv("DAGSHUB_REPO")
 
 # ========================== CONFIGURATION ==========================
 CONFIG = {
-    "data_path": "notebooks/data.csv",
+    "data_path": "notebooks\IMDB.csv",
     "test_size": 0.2,
     "mlflow_tracking_uri": MLFLOW_TRACKING_URI,
     "dagshub_repo_owner": DAGSHUB_OWNER,
@@ -119,6 +119,7 @@ def train_and_evaluate(df):
                     try:
                         # Feature extraction
                         X = vectorizer.fit_transform(df['review'])
+                        print(f"{vec_name} Vectorizer: Feature count = {len(vectorizer.vocabulary_)}")
                         y = df['sentiment']
                         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=CONFIG["test_size"], random_state=42)
 
