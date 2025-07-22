@@ -102,6 +102,24 @@ This project delivers a comprehensive MLOps workflow, covering the full machine 
 
 
 ---
+## 📸 Application Preview
+
+<img src="assets/application_ui.png" width="600"/>
+
+---
+
+## 📊 Prometheus Monitoring
+
+### 🔍 Prometheus Targets View
+<img src="assets/prometheus.png" width="600"/>
+
+---
+
+## 📈 Grafana Dashboard
+
+<img src="assets/grafana_dashboard.png" width="800"/>
+
+---
 
 ## 📘 Resources
 
